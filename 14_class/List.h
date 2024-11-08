@@ -29,7 +29,9 @@ public:
 	void print() const;
 	void printR() const;
 	bool empty() const;
+	List(const List<T>& other);
 	void removeByData(const T& data);
+	List<T>& operator = (const List<T>& other);
 private:
 	Node<T>* head = nullptr;
 	Node<T>* tail = nullptr;
@@ -161,6 +163,7 @@ inline bool List<T>::empty() const
 	return head == nullptr;
 }
 
+
 template<typename T>
 inline void List<T>::removeByData(const T& data)
 {
@@ -184,6 +187,31 @@ inline void List<T>::removeByData(const T& data)
 	--size;
 
 
+}
+
+template<typename T>
+inline List<T>& List<T>::operator=(const List<T>& other)
+{
+	clear();
+	Node<T>* current = other.head;
+	while (current != nullptr)
+	{
+		auto tmp = new Node<T>(current->data);
+		if (head == nullptr) {
+			head = tail = tmp;
+		}
+		else {
+		
+			tail->next = tmp; 
+			tmp->prev = tail; 
+			tail = tmp;      
+		}
+
+
+		current = current->next;
+	}
+
+	return *this;
 }
 
 template<typename T>
