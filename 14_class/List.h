@@ -28,8 +28,12 @@ public:
 	void clear();
 	void print() const;
 	void printR() const;
+	void repd();
 	bool empty() const;
-	List(const List<T>& other);
+	void inlist(const T& data, const size_t& index);
+	int research(const T& data1, const T& data2);
+	void outlist(const size_t& index);
+	int index(const T& data);
 	void removeByData(const T& data);
 	List<T>& operator = (const List<T>& other);
 private:
@@ -53,6 +57,8 @@ inline void List<T>::addHead(const T& data)
 	if (!empty())
 		head->prev = tmp;
 	head = tmp;
+
+	++size;
 }
 
 template<typename T>
@@ -64,6 +70,8 @@ inline void List<T>::addTail(const T& data)
 	if (!empty())
 		tail->next = tmp;
 	tail = tmp;
+	++size;
+
 }
 
 
@@ -158,9 +166,112 @@ inline void List<T>::printR() const
 }
 
 template<typename T>
+inline void List<T>::repd()
+{
+	auto tmp = head;
+	Node<T>* temp = nullptr;
+	while (tmp != nullptr) {
+		temp = tmp->prev;
+		tmp->prev = tmp->next;
+		tmp->next = temp;
+		tmp = tmp->prev; 
+	}
+	temp = head;
+	head = tail;
+	tail = temp;
+	
+}
+
+template<typename T>
 inline bool List<T>::empty() const
 {
 	return head == nullptr;
+}
+
+template<typename T>
+inline void List<T>::inlist(const T& data, const size_t& index)
+{
+	if (index == 0) {
+		addHead(data);
+	}
+	else if (index == size) {
+		addTail(data);
+	}
+	else {
+		Node<T>* tmp = head;
+		for (size_t i = 0; i < index - 1; ++i) {
+			tmp = tmp->next;
+		}
+
+		Node<T>* other_tmp = new Node<T>(data, tmp, tmp->next);
+		tmp->next->prev = other_tmp;
+		tmp->next = other_tmp;
+
+		++size;
+	}
+
+}
+
+template<typename T>
+inline int List<T>::research(const T& data1, const T& data2)
+{
+	int couter = 0;
+	auto tmp = head;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (tmp->data == data1)
+		{
+			tmp->data = data2;
+			couter++;
+		}
+		tmp = tmp->next;
+	}
+	if (couter > 0)
+	{
+		return couter;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+
+
+template<typename T>
+inline void List<T>::outlist(const size_t& index)
+{
+	if (index == 0) {
+		removeHead();
+	}
+	else if (index == size -1) {
+		removeTail();
+	}
+	else {
+		Node<T>* tmp = head;
+		for (size_t i = 0; i < index - 1; ++i) {
+			tmp = tmp->next;
+		}
+		tmp->next = tmp->next->next;
+		tmp->next->prev = tmp;
+
+		--size;
+	}
+}
+
+template<typename T>
+inline int List<T>::index(const T& data)
+{
+	auto tmp = head;
+	for (int i = 0; i < size; i++)
+	{
+		if (tmp->data == data)
+		{
+			return i; 
+		}
+		tmp = tmp->next;
+	}	
+	return -1;
 }
 
 

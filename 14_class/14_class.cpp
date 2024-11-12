@@ -48,6 +48,20 @@ int main()
 
 
 	
+	list.inlist(5, 2);
+	list.print();
+	list.outlist(2);
+	list.print();
+	cout << list.index(4) << endl;
+
+
+	cout << "replace count : " << list.research(17, 20) << endl;
+	list.print();
+
+
+	list.repd();
+	list.print();
+
 
 
 
