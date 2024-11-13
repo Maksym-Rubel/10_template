@@ -94,17 +94,17 @@ const size_t& Student::getAge() const
 
 }
 
-void Student::print() const
-{
-	cout << "\t Student" << endl;
-	cout << "Name     :: " << name << endl;
-	cout << "Surname  :: " << surname << endl;
-	cout << "Age	 :: " << age << endl;
-	cout << "Group	 :: " << group << endl;
-	cout << "Studying :: " << boolalpha << isstudying << endl;
-
-
-}
+//void Student::print() const
+//{
+//	cout << "\t Student" << endl;
+//	cout << "Name     :: " << name << endl;
+//	cout << "Surname  :: " << surname << endl;
+//	cout << "Age	 :: " << age << endl;
+//	cout << "Group	 :: " << group << endl;
+//	cout << "Studying :: " << boolalpha << isstudying << endl;
+//
+//
+//}
 
 Student::Student(const string& name, const string& surname, const size_t& age, const string& group, bool isstudying)
 	:isstudying(isstudying)
@@ -119,10 +119,10 @@ Student::Student(const string& name, const string& surname, const size_t& age, c
 
 }
 
-Student::~Student()
-{
-	cout << "<<<<<<< Dtor student << " << endl;
-}
+//Student::~Student()
+//{
+//	cout << "<<<<<<< Dtor student << " << endl;
+//}
 
 
 
