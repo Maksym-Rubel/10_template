@@ -85,11 +85,7 @@ int main()
 
 
 }*/
-void funChar(const char* value)
-{
-	char* ref1 = const_cast<char*>(value); 
-	ref1 += 1;
-}
+
 class MyClass1
 {
 public:
@@ -132,14 +128,14 @@ int main()
 
 
 
-
-
-
-	const char* t = "my text";
-	cout << t << endl;
-	funChar(t);
-	cout << t << endl;
-	// не виходить
+	// Завдання 1
+	// 
+	//const char* t = "my text";
+	//cout << t << endl;
+	//char* ref3 = const_cast<char*>(t); 
+	//ref3[0] = 'h';
+	//cout << t << endl;
+	// не робить
 
 	cout << "\n\n";
 
