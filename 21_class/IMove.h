@@ -151,7 +151,7 @@ public:
 class Horse : public IDricable
 {
 	string name;
-	const size_t maxSpeed = 200;
+	const size_t maxSpeed = 50;
 	size_t speed;
 	string poroda;
 public:
