@@ -219,7 +219,7 @@ public:
             }
         }
 
-        cout << "Animal not found!" << endl;
+        cout << "Animal not found" << endl;
     }
 
     void removeAllAnimals() {
